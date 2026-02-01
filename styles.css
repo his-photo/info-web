@@ -1,0 +1,851 @@
+/* 전역 리셋 및 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* 색상 팔레트 */
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-light: #818cf8;
+    --secondary-color: #ec4899;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #f9fafb;
+    --bg-white: #ffffff;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    
+    /* 타이포그래피 */
+    --font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-base);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--bg-white);
+    border-radius: 24px;
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    animation: slideUp 0.6s ease-out;
+}
+
+/* 애니메이션 */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.fade-in-delay-1 {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+.fade-in-delay-2 {
+    animation: fadeIn 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.fade-in-delay-3 {
+    animation: fadeIn 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+.fade-in-delay-4 {
+    animation: fadeIn 0.8s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+/* 헤더 */
+.header {
+    text-align: center;
+    padding: 60px 30px 40px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+    padding: 40px 30px;
+}
+
+/* 안내 문구 섹션 */
+.notice-section {
+    margin-bottom: 40px;
+}
+
+.notice-box {
+    background: linear-gradient(135deg, #fff5f5 0%, #fff9f0 100%);
+    border-left: 5px solid #ef4444;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+}
+
+.notice-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #dc2626;
+}
+
+.notice-text {
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    line-height: 1.9;
+}
+
+.notice-text strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* 특별 혜택 섹션 */
+.benefits-section {
+    margin-bottom: 50px;
+}
+
+.benefits-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.benefits-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    line-height: 1.8;
+    padding: 0 20px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.benefit-card {
+    background: var(--bg-white);
+    padding: 32px 24px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.benefit-card:hover::before {
+    transform: scaleX(1);
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-light);
+}
+
+.benefit-card.highlight {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 2px solid #fbbf24;
+    box-shadow: 0 8px 20px rgba(251, 191, 36, 0.3);
+}
+
+.benefit-card.highlight:hover {
+    box-shadow: 0 12px 28px rgba(251, 191, 36, 0.4);
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.benefit-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.benefit-card p {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.benefit-card strong {
+    color: #dc2626;
+    font-size: 1.1rem;
+}
+
+.benefit-note {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #92400e;
+    font-style: italic;
+}
+
+.benefit-badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 16px;
+    background: #dc2626;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* 지도 섹션 */
+.map-section {
+    margin-bottom: 50px;
+}
+
+.map-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+}
+
+/* 지도 이미지 컨테이너 */
+.location-map-container {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    margin-bottom: 30px;
+}
+
+.map-image-link {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.location-map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.map-image-link:hover .location-map-image {
+    transform: scale(1.02);
+}
+
+.map-click-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.map-image-link:hover .map-click-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    animation: bounceIn 0.5s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.overlay-icon {
+    font-size: 3rem;
+}
+
+.overlay-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.map-info {
+    margin-top: 30px;
+    padding: 0;
+    background: transparent;
+}
+
+.map-description {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    line-height: 1.8;
+    padding: 20px;
+    background: var(--bg-light);
+    border-radius: 12px;
+}
+
+.map-description strong {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.map-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.map-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    background: white;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.map-action-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.map-action-btn.naver {
+    border-color: #03C75A;
+}
+
+.map-action-btn.naver:hover {
+    background: #f0fdf4;
+    border-color: #02b350;
+}
+
+.map-action-btn.kakao {
+    border-color: #FEE500;
+}
+
+.map-action-btn.kakao:hover {
+    background: #fffef0;
+    border-color: #f9d800;
+}
+
+.map-action-btn.call {
+    border-color: var(--primary-color);
+}
+
+.map-action-btn.call:hover {
+    background: #f5f3ff;
+    border-color: var(--primary-dark);
+}
+
+.btn-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.map-action-btn div {
+    text-align: left;
+}
+
+.map-action-btn strong {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.map-action-btn small {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* CTA 버튼 */
+.cta-section {
+    margin-bottom: 50px;
+    text-align: center;
+    padding: 20px;
+}
+
+.cta-note {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #dc2626;
+    font-weight: 600;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 18px 48px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.5s ease;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.cta-button:active {
+    transform: translateY(-1px);
+}
+
+.arrow-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .arrow-icon {
+    transform: translateX(5px);
+}
+
+/* 연락처 및 운영 정보 섹션 */
+.contact-section {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    padding: 50px 40px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-lg);
+}
+
+.contact-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.contact-item {
+    background: var(--bg-white);
+    padding: 32px 24px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.contact-item.large {
+    padding: 40px 28px;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-light);
+}
+
+.contact-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.contact-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.contact-info a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+.contact-detail {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-top: 8px;
+}
+
+.operating-hours {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 12px 0;
+}
+
+.thank-you-message {
+    text-align: center;
+    padding: 30px;
+    background: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
+.thank-you-message p {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+/* 푸터 */
+.footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--bg-light);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        border-radius: 16px;
+    }
+
+    .header {
+        padding: 40px 20px 30px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .main-content {
+        padding: 30px 20px;
+    }
+
+    .notice-box {
+        padding: 24px;
+    }
+
+    .notice-title {
+        font-size: 1.4rem;
+    }
+
+    .notice-text {
+        font-size: 1.05rem;
+    }
+
+    .benefits-title {
+        font-size: 1.7rem;
+    }
+
+    .benefits-intro {
+        font-size: 1rem;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .benefit-card {
+        padding: 28px 20px;
+    }
+
+    .map-title {
+        font-size: 1.6rem;
+    }
+
+    .location-map-image {
+        border-radius: 12px;
+    }
+
+    .overlay-icon {
+        font-size: 2.5rem;
+    }
+
+    .overlay-text {
+        font-size: 1.1rem;
+    }
+
+    .map-description {
+        font-size: 1rem;
+        padding: 16px;
+    }
+
+    .map-description strong {
+        font-size: 1.1rem;
+    }
+
+    .map-actions {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .map-action-btn {
+        padding: 18px 20px;
+    }
+
+    .cta-button {
+        padding: 16px 36px;
+        font-size: 1.1rem;
+    }
+
+    .cta-note {
+        font-size: 1rem;
+    }
+
+    .contact-section {
+        padding: 40px 24px;
+    }
+
+    .contact-title {
+        font-size: 1.7rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .thank-you-message {
+        padding: 24px;
+    }
+
+    .thank-you-message p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.6rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .notice-title {
+        font-size: 1.2rem;
+    }
+
+    .benefits-title {
+        font-size: 1.5rem;
+    }
+
+    .benefit-icon {
+        font-size: 2.5rem;
+    }
+
+    .benefit-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .map-title {
+        font-size: 1.4rem;
+    }
+
+    .overlay-icon {
+        font-size: 2rem;
+    }
+
+    .overlay-text {
+        font-size: 1rem;
+    }
+
+    .map-description {
+        font-size: 0.95rem;
+    }
+
+    .btn-icon {
+        font-size: 2rem;
+    }
+
+    .map-action-btn strong {
+        font-size: 1rem;
+    }
+
+    .map-action-btn small {
+        font-size: 0.85rem;
+    }
+
+    .contact-title {
+        font-size: 1.5rem;
+    }
+
+    .contact-info a {
+        font-size: 1.3rem;
+    }
+
+    .operating-hours {
+        font-size: 1.2rem;
+    }
+}
+
+/* 프린트 스타일 */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .container {
+        box-shadow: none;
+    }
+
+    .cta-button {
+        background: var(--primary-color);
+    }
+}

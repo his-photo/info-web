@@ -1,0 +1,19 @@
+# OS 파일
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 에디터 설정
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 임시 파일
+*.tmp
+*.temp
+*.log
+
+# 백업 파일
+*.bak
+*~
